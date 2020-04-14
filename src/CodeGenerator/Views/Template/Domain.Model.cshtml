@@ -1,0 +1,72 @@
+﻿@using CodeGenerator.Common
+@model TableConfig
+@{
+    string functionStr = Model.TableName.Substring(0, 1).ToLower() + Model.TableName.Substring(1);
+    bool fieldPascal = (bool)ViewData["FieldPascal"];
+    List<string> ids = new List<string>() { "id", "Id", "iD", "ID" };
+    var main = Model.ColumnConfig.SingleOrDefault(x => ids.Contains(x.PropName));
+}
+    <pre>
+/*
+* @Model.TableName
+* create by @ViewData["Auth"].ToString() @DateTime.Now.ToString("yyyy/MM/dd")
+*/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using Sansunt.Domain.Core.Models;
+
+namespace Sansunt.HiCard.Domain.Models
+{
+    /// <summary>
+    /// des:@Model.FullName
+    /// create by @ViewData["Auth"].ToString() @DateTime.Now.ToString("yyyy/MM/dd")
+    ///</summary>
+	public class @Model.FullName:@Html.Raw(main==null?$"ValueObject<{Model.FullName}>" : $"Entity<{main.CsType}>")
+    {
+        /// <summary>
+		/// 默认无参构造
+        /// </summary>
+        public  @(Model.FullName)()
+        {
+        }
+    @foreach (var item in Model.ColumnConfig)
+    {
+        if (ids.Contains(item.PropName))
+        {
+            continue;
+        }
+        <text>
+        /// <summary>
+		/// @Html.Raw(item.Remark)
+        /// </summary>
+        public  @item.CsType @item.PropName.ProcessingFieldName(fieldPascal){get; set; }  
+    </text>   
+    }
+    @if (main == null)
+    {
+        <text>
+        protected override bool EqualsCore(@Model.FullName other)
+        {
+            @{
+                string returnResult = "return ";
+                for (int i = 0; i < Model.ColumnConfig.Count; i++)
+                {
+                    string propName = Model.ColumnConfig[i].PropName.ProcessingFieldName(fieldPascal);
+                    returnResult += $"this.{propName} == other.{propName}{((Model.ColumnConfig.Count)==(i+1) ? ";" : "&&")}";
+                }
+            }
+            @Html.Raw(returnResult)
+        }
+        protected override int GetHashCodeCore()
+        {
+            throw new NotImplementedException();
+        }
+        </text>
+    }
+
+    }
+}
+</pre>

@@ -1,0 +1,22 @@
+﻿@model TableConfig
+<pre>
+using FLShop.BusinessModel.Model;
+using FLShop.IRepository;
+using FLShop.IService.Fulu;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using FLShop.IService.Fulu;
+
+namespace FLShop.Service.Fulu
+{
+    public class @Model.FullName:BaseService<@Model.TableName>,I@(Model.FullName)
+    {
+        private readonly IBaseRepository<@Model.TableName> dao;
+        public @(Model.FullName)(IBaseRepository<@Model.TableName> dao):base(dao)
+        {
+            this.dao = dao;
+        }
+    }
+}
+</pre>
