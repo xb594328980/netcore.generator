@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="FreeSql" Version="0.9.18" />
     <PackageReference Include="FreeSql.Provider.MySqlConnector" Version="0.9.18" />
@@ -11,25 +9,21 @@
     <PackageReference Include="FreeSql.Provider.SqlServer" Version="0.9.18" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
+  </ItemGroup>  <ItemGroup>
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Update="Views\Shared\_IFrame.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Template\Data.Map.cshtml">
+    <Content Update="Views\Template\Data\Data.Map.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\Template\Domain.Model.cshtml">
+    <Content Update="Views\Template\Domain\Domain.Model.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 </Project>

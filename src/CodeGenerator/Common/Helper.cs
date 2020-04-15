@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeGenerator.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,6 +50,37 @@ namespace CodeGenerator.Common
                 result.Append(item.Substring(1));
             }
             return result.ToString();
+        }
+
+
+
+        public static string ConstructorParams(this TableConfig table, bool pascal = true)
+        {
+            StringBuilder str = new StringBuilder();
+            if (table == null)
+                throw new AggregateException("table为空");
+            foreach (var item in table.ColumnConfig)
+            {
+                string fieldName = item.PropName.ProcessingFieldName(pascal);
+                str.Append($"{item.CsType} {fieldName.Substring(0, 1).ToLower()}{fieldName.Substring(1)},");
+            }
+            return str.ToString().TrimEnd(',') ;
+        }
+
+        public static string ConstructorParamsDetails(this ColumnConfig column, bool pascal = true)
+        {
+            string fieldName = column.PropName.ProcessingFieldName(pascal);
+            return $"this.{fieldName}={fieldName.Substring(0, 1).ToLower()}{fieldName.Substring(1)};\\r\\n";
+        }
+
+        /// <summary>
+        /// 获取实例前缀不包含具体模块名称
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        public static string GetInstanceName(this TableConfig table)
+        {
+            return $"{table.FullName.Substring(0,1).ToLower()}{table.FullName.Substring(1)}";
         }
     }
 }

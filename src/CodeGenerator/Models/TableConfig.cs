@@ -17,6 +17,11 @@ namespace CodeGenerator.Models
         public string TableName { get; set; }
 
         /// <summary>
+        /// 表注释
+        /// </summary>
+        public string Comment { get; set; }
+
+        /// <summary>
         /// 全名
         /// </summary>
         public string FullName { get; set; }

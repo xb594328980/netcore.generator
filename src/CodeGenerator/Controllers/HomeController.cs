@@ -194,6 +194,7 @@ namespace CodeGenerator.Controllers
                             Id = tableid,
                             TableName = table.Name,
                             DbName = db,
+                            Comment = table.Comment,
                             ColumnConfig = new List<ColumnConfig>()
                         };
                         foreach (var column in table.Columns)
@@ -202,7 +203,9 @@ namespace CodeGenerator.Controllers
                             {
                                 ColumnName = column.Name,
                                 CsType = column.CsType.FullName,
-                                Remark = column.Coment
+                                Remark = column.Coment,
+                                IsNullable = column.IsNullable,
+                                IsPrimary = column.IsPrimary
                             });
                         }
                         _cache.Set(tableid, tableConfig);
@@ -270,12 +273,13 @@ namespace CodeGenerator.Controllers
                         var result = await _viewRenderService.RenderToStringAsync(temp.TempatePath, talbe, viewData);
                         result = result.Replace("<pre>", "").Replace("</pre>", "");
                         var name = $"{talbe.FullName}{temp.FileSuffix}";
-                        var path = $"{_appsettingConfig.Path.TrimEnd('/')}/{temp.FilePath}";
+                        var path = $"{_appsettingConfig.Path.TrimEnd('/')}/{temp.FilePath}".Replace("{TableName}", talbe.TableName);
+
                         if (!Directory.Exists(path))
                             Directory.CreateDirectory(path);
                         path = Path.Combine(path, name);
                         if (System.IO.File.Exists(path))
-                            break;// System.IO.File.Delete(path);
+                            continue;// System.IO.File.Delete(path);
                         FileInfo f = new FileInfo(path);
                         using (var stream = f.OpenWrite())
                             stream.Write(Encoding.UTF8.GetBytes(result));

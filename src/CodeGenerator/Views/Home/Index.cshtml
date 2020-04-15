@@ -1,6 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@{ ViewData["Title"] = "代码生成器"; }
 <link href="~/lib/zTree/css/bootstrapStyle/bootstrapStyle.css" rel="stylesheet" />
 <script src="~/lib/zTree/js/jquery.ztree.core.js"></script>
 <script src="~/lib/zTree/js/jquery.ztree.excheck.js"></script>
@@ -10,7 +8,7 @@
 <div id="main">
     <ul class="layui-nav">
         <li class="layui-nav-item">
-            <a id="Generator" href="javascript:void(0)">生成代码</a>
+            <a id="Generator" href="javascript:void(0)" >生成代码</a>
         </li>
         <li class="layui-nav-item" style="float:right">代码生成器v1.0</li>
     </ul>
@@ -28,44 +26,51 @@
 
 <style>
     /*修改滚动条样式*/
-    div::-webkit-scrollbar{
-      width:10px;
-      height:10px;
-      /**/
+    div::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        /**/
     }
-    div::-webkit-scrollbar-track{
-      background: rgb(239, 239, 239);
-      border-radius:2px;
-    }
-    div::-webkit-scrollbar-thumb{
-      background: #bfbfbf;
-      border-radius:10px;
-    }
-    div::-webkit-scrollbar-thumb:hover{
-      /*background: #333;*/
-    }
-    div::-webkit-scrollbar-corner{
-      background: rgb(239,239,239);
-    }
-    html body {
 
-       margin:0 auto;
-       margin-top:80px;
-       width:900px;
-       border-bottom:10px solid rgb(239,239,239);
+    div::-webkit-scrollbar-track {
+        background: rgb(239, 239, 239);
+        border-radius: 2px;
     }
+
+    div::-webkit-scrollbar-thumb {
+        background: #bfbfbf;
+        border-radius: 10px;
+    }
+
+        div::-webkit-scrollbar-thumb:hover {
+            /*background: #333;*/
+        }
+
+    div::-webkit-scrollbar-corner {
+        background: rgb(239,239,239);
+    }
+
+    html body {
+        margin: 0 auto;
+        margin-top: 80px;
+        width: 900px;
+        border-bottom: 10px solid rgb(239,239,239);
+    }
+
     .menu-left {
-        float:left;
+        float: left;
         width: 50%;
         height: 600px;
         overflow-y: scroll;
     }
+
     .left-border {
         height: 100%;
         border-left: 10px solid rgb(239,239,239);
     }
-    .temp{
-        width:50%;
+
+    .temp {
+        width: 50%;
         height: 600px;
         overflow-y: scroll;
     }
@@ -84,15 +89,15 @@
 
             showRenameBtn: showRenameBtn,
             showRemoveBtn: showRemoveBtn
-         },
-         check: {
-　　　　    enable: true,   //true / false 分别表示 显示 / 不显示 复选框或单选框
-　　　　    autoCheckTrigger: true,   //true / false 分别表示 触发 / 不触发 事件回调函数
+        },
+        check: {
+            enable: true,   //true / false 分别表示 显示 / 不显示 复选框或单选框
+            autoCheckTrigger: true,   //true / false 分别表示 触发 / 不触发 事件回调函数
             chkStyle: "checkbox",   //勾选框类型(checkbox 或 radio）
         },
         data: {
             simpleData: {
-            enable: true
+                enable: true
             }
         },
         callback: {
@@ -116,15 +121,15 @@
             //给节点额外增加属性来控制“重命名”、“删除”图标的显示或隐藏
             showRenameBtn: showRenameBtn,
             showRemoveBtn: showRemoveBtn
-         },
-         check: {
-　　　　    enable: true,   //true / false 分别表示 显示 / 不显示 复选框或单选框
-　　　　    autoCheckTrigger: true,   //true / false 分别表示 触发 / 不触发 事件回调函数
-　　　　    chkStyle: "checkbox",   //勾选框类型(checkbox 或 radio）
+        },
+        check: {
+            enable: true,   //true / false 分别表示 显示 / 不显示 复选框或单选框
+            autoCheckTrigger: true,   //true / false 分别表示 触发 / 不触发 事件回调函数
+            chkStyle: "checkbox",   //勾选框类型(checkbox 或 radio）
         },
         data: {
             simpleData: {
-            enable: true
+                enable: true
             }
         },
         callback: {
@@ -153,7 +158,7 @@
         this.name = name;
         this.noRemoveBtn = true;
         this.noEditBtn = true;
-}    
+    }
 
     //选中事件
     function beforeClick(treeId, treeNode) {
@@ -196,9 +201,8 @@
         treeNodeEdit = treeNode;
         var url = "/home/edit?Id=" + treeNode.id;
         console.log(treeNode);
-        if (treeNode.pId == "temp0")
-        {
-            url = "/TemplateConfig/edit?Id="+ treeNode.id;
+        if (treeNode.pId == "temp0") {
+            url = "/TemplateConfig/edit?Id=" + treeNode.id;
         }
 
 
@@ -206,7 +210,7 @@
             var layer = layui.layer;
             layer.open({
                 type: 2,
-                area: ['650px', '500px'],
+                area: ['750px', '500px'],
                 fixed: false, //不固定
                 maxmin: true,
                 title: '编辑',
@@ -277,8 +281,7 @@
             var url = "/home/deleteServer"
             var para = { Id: treeNode.id };
             console.log(treeNode);
-            if (treeNode.pId == "temp0")
-            {
+            if (treeNode.pId == "temp0") {
                 zTree = $.fn.zTree.getZTreeObj("tree2");
                 url = "/TemplateConfig/deletetemp";
             }
@@ -375,18 +378,17 @@
             sObj.after(addStr);
             var btn = $("#addBtn_" + treeNode.id);
             if (btn) btn.bind("click", function () {
-                
+
                 treeNodeAdd = treeNode;
                 var url = "/home/create";
-                if (treeNode.id == "temp0")
-                {
+                if (treeNode.id == "temp0") {
                     url = "/TemplateConfig/create";
                 }
                 layui.use('layer', function () {
                     var layer = layui.layer;
                     layer.open({
                         type: 2,
-                        area: ['650px', '500px'],
+                        area: ['750px', '500px'],
                         fixed: false, //不固定
                         maxmin: true,
                         content: url,
@@ -455,21 +457,18 @@
         });
         zTree2 = $.fn.zTree.init($("#tree2"), setting2, zNodes);
 
-        $("#Generator").click(function ()
-        {
+        $("#Generator").click(function () {
             var selectedNodes = zTree.getCheckedNodes();
             var selectedNodes2 = zTree2.getCheckedNodes();
             var tables = [];
             var temps = [];
             $.each(selectedNodes, function (k, v) {
-                if (v.level == 3)
-                {
+                if (v.level == 3) {
                     tables.push(v.id);
                 }
             });
             $.each(selectedNodes2, function (k, v) {
-                if (v.level == 1)
-                {
+                if (v.level == 1) {
                     temps.push(v.id);
                 }
             });
@@ -481,16 +480,16 @@
 
             } else {
                 $.ajax({
-                url: '/Home/Generator',
-                type: 'post',
-                async: false,//使用同步的方式,true为异步方式
-                data: {tables:tables,temps:temps},//这里使用json对象
-                success: function (data) {
-                    layui.use('layer', function () {
-                    layer.msg(data.msg);
+                    url: '/Home/Generator',
+                    type: 'post',
+                    async: false,//使用同步的方式,true为异步方式
+                    data: { tables: tables, temps: temps },//这里使用json对象
+                    success: function (data) {
+                        layui.use('layer', function () {
+                            layer.msg(data.msg);
+                        });
+                    }
                 });
-                }
-            });
             }
 
         })

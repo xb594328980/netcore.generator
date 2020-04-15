@@ -18,6 +18,14 @@ namespace CodeGenerator.Models
         public string ColumnName { get; set; }
 
         /// <summary>
+        /// 是否可DBNull
+        /// </summary>
+        public bool IsNullable { get; set; }
+
+
+        public bool IsPrimary { get; set; }
+
+        /// <summary>
         /// 属性名称
         /// </summary>
         public string PropName
@@ -51,43 +59,43 @@ namespace CodeGenerator.Models
                 switch (_csType)
                 {
                     case "System.Boolean":
-                        _csType = "bool";
+                        _csType = $"bool{(IsNullable ? "?" : "")}";
                         break;
                     case "System.Byte":
                         _csType = "byte";
                         break;
                     case "System.SByte":
-                        _csType = "bool";
+                        _csType = $"bool{(IsNullable ? "?" : "")}";
                         break;
                     case "System.Char":
                         _csType = "char";
                         break;
                     case "System.Decimal":
-                        _csType = "decimal";
+                        _csType = $"decimal{(IsNullable ? "?" : "")}";
                         break;
                     case "System.Double":
-                        _csType = "double";
+                        _csType = $"double{(IsNullable ? "?" : "")}";
                         break;
                     case "System.Single":
-                        _csType = "float";
+                        _csType = $"float{(IsNullable ? "?" : "")}";
                         break;
                     case "System.Int32":
-                        _csType = "int";
+                        _csType = $"int{(IsNullable ? "?" : "")}";
                         break;
                     case "System.UInt32":
-                        _csType = "uint";
+                        _csType = $"uint{(IsNullable ? "?" : "")}";
                         break;
                     case "System.Int64":
-                        _csType = "ulong";
+                        _csType = $"ulong{(IsNullable ? "?" : "")}";
                         break;
                     case "System.Object":
                         _csType = "object";
                         break;
                     case "System.Int16":
-                        _csType = "short";
+                        _csType = $"short{(IsNullable ? "?" : "")}";
                         break;
                     case "System.UInt16":
-                        _csType = "ushort";
+                        _csType = $"ushort{(IsNullable ? "?" : "")}";
                         break;
                     case "System.String":
                         _csType = "string";
