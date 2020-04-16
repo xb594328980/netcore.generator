@@ -33,5 +33,10 @@ namespace CodeGenerator.Common
         /// </summary>
         public string Auth { get; set; }
 
+        /// <summary>
+        /// 命名空间
+        /// </summary>
+        public string NameSpace { get; set; }
+
     }
 }

@@ -57,7 +57,7 @@ using CodeGenerator.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             BeginContext(22, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9ef0a6754f16411099500d12ff07904d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "afb81c8580174b2cbd5f56d1b2a89e32", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -76,7 +76,7 @@ using CodeGenerator.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(86, 2149, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a1773663cfcb46bdb67fc34ad6f1d0ef", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f05a04b3aaa0455ba659c08ae1ffb719", async() => {
                 BeginContext(131, 64, true);
                 WriteLiteral("\n    <div class=\"layui-col-xs11\" style=\"margin-top:5%\">\n        ");
                 EndContext();

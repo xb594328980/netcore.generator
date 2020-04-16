@@ -8,7 +8,7 @@ namespace CodeGenerator.Models
     public class TableConfig
     {
 
-        
+
 
         public string Id { get; set; }
         /// <summary>
@@ -25,6 +25,11 @@ namespace CodeGenerator.Models
         /// 全名
         /// </summary>
         public string FullName { get; set; }
+
+        /// <summary>
+        /// 全名不包含具体模块，只是处理后的表名称
+        /// </summary>
+        public string Name { get; set; }
 
 
         /// <summary>

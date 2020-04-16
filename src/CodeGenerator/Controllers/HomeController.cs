@@ -259,21 +259,22 @@ namespace CodeGenerator.Controllers
                 {
                     var talbe = _cache.Get<TableConfig>(item);
                     //处理表名
-                    talbe.TableName = talbe.TableName.ProcessingTableName(_appsettingConfig.TablePascal, _appsettingConfig.TablePrefix);
+                    talbe.Name = talbe.TableName.ProcessingTableName(_appsettingConfig.TablePascal, _appsettingConfig.TablePrefix);
                     foreach (var temp in templateList)
                     {
                         if (!string.IsNullOrEmpty(temp.FileName))
-                            talbe.FullName = temp.FileName.Replace("{TableName}", talbe.TableName);
+                            talbe.FullName = temp.FileName.Replace("{TableName}", talbe.Name);
                         else
-                            talbe.FullName = talbe.TableName;
+                            talbe.FullName = talbe.Name;
                         temp.TempatePath = temp.TempatePath.Replace(".cshtml", "").Trim().TrimStart('/');
                         Dictionary<string, object> viewData = new Dictionary<string, object>();
                         viewData.Add("FieldPascal", _appsettingConfig.FieldPascal);
                         viewData.Add("Auth", _appsettingConfig.Auth);
+                        viewData.Add("NameSpace", _appsettingConfig.NameSpace);
                         var result = await _viewRenderService.RenderToStringAsync(temp.TempatePath, talbe, viewData);
                         result = result.Replace("<pre>", "").Replace("</pre>", "");
                         var name = $"{talbe.FullName}{temp.FileSuffix}";
-                        var path = $"{_appsettingConfig.Path.TrimEnd('/')}/{temp.FilePath}".Replace("{TableName}", talbe.TableName);
+                        var path = $"{_appsettingConfig.Path.TrimEnd('/')}/{temp.FilePath}".Replace("{TableName}", talbe.Name);
 
                         if (!Directory.Exists(path))
                             Directory.CreateDirectory(path);

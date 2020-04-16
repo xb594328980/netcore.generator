@@ -80,7 +80,7 @@ namespace CodeGenerator.Common
         /// <returns></returns>
         public static string GetInstanceName(this TableConfig table)
         {
-            return $"{table.FullName.Substring(0,1).ToLower()}{table.FullName.Substring(1)}";
+            return $"{table.Name.Substring(0,1).ToLower()}{table.Name.Substring(1)}";
         }
     }
 }

@@ -55,7 +55,7 @@ using CodeGenerator.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             BeginContext(18, 3520, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f63e2e1ee1fb4c33b4fed1b99c631145", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4144bec166584ddc8f35d2777268df5b", async() => {
                 BeginContext(63, 106, true);
                 WriteLiteral("\n    <div class=\"layui-col-xs11\" style=\"margin-top:5%\">\n        <div class=\"layui-form-item\">\n            ");
                 EndContext();
@@ -182,7 +182,7 @@ WriteAttributeValue("", 2115, Model?.Pwd, 2115, 11, false);
                 WriteLiteral("        ");
                 EndContext();
                 BeginContext(3076, 54, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d283f0bb79f4a1891958f4b494f5424", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b97f9ae461447f1956279a9c83fb5d5", async() => {
                     BeginContext(3108, 13, false);
 #line 59 "C:\Users\xingbo\Documents\Work\netcore.generator\src\CodeGenerator\Views\Home\_CreateOrEdit.cshtml"
                                   Write(Model?.DbName);
